@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FreeNow Interview Task Web Application</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 50px;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+
+        label, input[type="text"], input[type="file"], input[type="submit"] {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        input[type="submit"] {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>FreeNow Interview Task Web Application</h1>
+
+    <!-- Form to Add Data to Database -->
+    <h2>Add Data to Database</h2>
+    <form action="/add" method="post">
+        <label for="data">Data:</label>
+        <input type="text" id="data" name="data">
+        <input type="submit" value="Submit">
+    </form>
+    <br><br>
+
+    <!-- Form to Upload File to S3 -->
+    <h2>Upload File to S3</h2>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <label for="file">Choose file:</label>
+        <input type="file" id="file" name="file">
+        <input type="submit" value="Upload">
+    </form>
+
+</body>
+</html>
