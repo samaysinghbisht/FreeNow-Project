@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Update and install necessary packages
+yum update -y
+yum install docker -y
+
+# Start Docker service
+systemctl start docker.service
+
+# Add current user to Docker group
+usermod -aG docker $USER
+
+# Set the RDS endpoint as an environment variable
+export RDS_HOSTNAME="${rds_hostname}"
+export S3_BUCKET="${s3_bucket}"
+
+sudo docker pull samay1993/freenow:latest
+
+docker run -d -p 80:80 \
+           -e RDS_HOSTNAME=$RDS_HOSTNAME \
+           -e RDS_USERNAME=dbuser \
+           -e RDS_PASSWORD=dbpassword \
+           -e S3_BUCKET=$S3_BUCKET \
+           samay1993/freenow:latest
+
+chmod 400 private-key.pem
